@@ -16,7 +16,7 @@ import NextLink from "next/link";
 import clsx from "clsx";
 
 import { siteConfig } from "@/config/site";
-import { ThemeSwitch } from "@/components/theme-switch";
+import { ThemeSwitch } from "@/app/components/theme-switch";
 import {
   TwitterIcon,
   GithubIcon,
@@ -24,9 +24,9 @@ import {
   HeartFilledIcon,
   SearchIcon,
   Logo,
-} from "@/components/icons";
-import { createClient } from "@/utils/supabase/server";
-import Logout from "./Logout";
+} from "@/app/components/icons";
+import { createClient } from "@/app/utils/supabase/server";
+import Logout from "../Logout";
 
 export const Navbar = async () => {
   const supabase = await createClient();

@@ -1,5 +1,5 @@
 import { login, signup } from './actions'
-import LoginForm from "@/components/LoginForm";
+import LoginForm from "@/app/components/LoginForm";
 import Link from "next/link";
 
 export default function LoginPage() {
