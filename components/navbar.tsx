@@ -25,8 +25,15 @@ import {
   SearchIcon,
   Logo,
 } from "@/components/icons";
+import { createClient } from "@/utils/supabase/server";
+import Logout from "./Logout";
 
-export const Navbar = () => {
+export const Navbar = async () => {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   const searchInput = (
     <Input
       aria-label="Search"
@@ -63,7 +70,7 @@ export const Navbar = () => {
               <NextLink
                 className={clsx(
                   linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium",
+                  "data-[active=true]:text-primary data-[active=true]:font-medium"
                 )}
                 color="foreground"
                 href={item.href}
@@ -93,16 +100,22 @@ export const Navbar = () => {
         </NavbarItem>
         <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
         <NavbarItem className="hidden md:flex">
-          <Button
-            isExternal
-            as={Link}
-            className="text-sm font-normal text-default-600 bg-default-100"
-            href={siteConfig.links.sponsor}
-            startContent={<HeartFilledIcon className="text-danger" />}
-            variant="flat"
-          >
-            Sponsor
-          </Button>
+          {!user ? (
+            <div>
+              <Link href="/login">
+                <p>Log in</p>
+              </Link>
+              <Link href="/register">
+              <Button className="ml-2" variant="solid" color="primary">
+                <p>Create Account</p>
+                </Button>
+              </Link>
+            </div>
+          ) : (
+            <div>
+              <Logout />
+            </div>
+          )}
         </NavbarItem>
       </NavbarContent>
 
