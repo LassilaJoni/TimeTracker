@@ -41,7 +41,7 @@ const projects = [
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold tracking-tight">Dashboard</h1>
         <Button>
-          <Link href="/new-project" className="flex items-center">
+          <Link href="/dashboard/new-project" className="flex items-center">
              New Project
           </Link>
         </Button>
@@ -58,7 +58,7 @@ const projects = [
           <h3 className="text-xl font-medium">No projects yet</h3>
           <p className="text-muted-foreground mb-4">Start by creating your first project</p>
           <Button>
-            <Link href="/new-project">
+            <Link href="/dashboard/new-project">
                Create Project
             </Link>
           </Button>
