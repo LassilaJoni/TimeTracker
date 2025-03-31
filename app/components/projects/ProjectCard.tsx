@@ -4,7 +4,7 @@ import { Project } from "@/app/types";
 import { Link } from "@heroui/link";
 import { useState } from "react";
 import { Card, CardHeader, CardBody, CardFooter } from "@heroui/card";
-import { ClockIcon, PlusIcon, TimerIcon } from "lucide-react";
+import { ClockIcon, EditIcon, PlusIcon, TimerIcon, TrashIcon } from "lucide-react";
 import { Badge } from "@heroui/react";
 import { format } from "date-fns";
 
@@ -28,7 +28,7 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <Card className="hover-scale subtle-shadow animate-scale-in">
+    <Card className=" animate-appearance-in max-w-[400px]">
       <CardHeader className="flex flex-row items-start justify-between space-y-0 pb-2">
         <div>
           <CardHeader className="font-medium">{project.name}</CardHeader>
@@ -37,13 +37,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
           </div>
         </div>
         <div className="flex space-x-2">
-          <Button variant="ghost">
+          <Button isIconOnly>
             <Link href={`/projects/${project.id}/edit`}>
-              <p>ed</p> {/* Edit icon can be added here */}
+              <EditIcon className="h-4 w-4" /> 
             </Link>
-          </Button>
-          <Button variant="ghost" size="sm">
-            <p>del</p> {/* Delete icon can be added here */}
           </Button>
         </div>
       </CardHeader>

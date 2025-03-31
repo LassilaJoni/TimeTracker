@@ -1,5 +1,5 @@
 import { getUserSession } from "@/app/actions/auth";
-import { AppSidebar } from "@/app/components/app-sidebar";
+import { AppSidebar } from "@/app/components/navigation-bar/app-sidebar";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -18,8 +18,8 @@ export default async function DashboardLayout({
   }
   return (
     <SidebarProvider defaultOpen={defaultOpen}>
-      <AppSidebar />
-      <main>
+      <AppSidebar  />
+      <main className="m-4">
         <SidebarTrigger />
         {children}
       </main>

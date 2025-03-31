@@ -14,13 +14,11 @@ const Logout = () => {
   };
 
   return (
-    <div className="bg-gray-600 text-white text-sm px-4 py-2 rounded-md cursor-pointer">
       <form onSubmit={handleLogout}>
-        <button type="submit" disabled={loading}>
+        <button type="submit" disabled={loading} className="w-full">
           {loading ? "Signing out..." : "Sign out"}
         </button>
       </form>
-    </div>
   );
 };
 
