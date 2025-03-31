@@ -13,21 +13,27 @@ interface ProjectCardProps {
   project: {
     id: string;
     name: string;
-    description: string;
-    hourly_rate: number | null;
-    deadline: string | null;
-
+    description?: string;
+    hourlyRate: number;
+    deadline?: Date;
+    totalDuration: number;
+    totalEarnings: number;
+    tasks: {
+      id: string;
+      name: string;
+      duration: number; // in seconds
+    }[];
   };
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <Card className="animate-appearance-in w-[350px]">
+    <Card className="animate-appearance-in w-[400px]">
       <CardHeader className="flex flex-row items-start justify-between space-y-0 pb-2">
         <div>
-          <p className="font-medium">{project.name}</p>
+          <CardHeader className="font-medium">{project.name}</CardHeader>
           <div className="text-sm text-muted-foreground mt-1">
-            {project.hourly_rate}/hour
+            {project.hourlyRate}/hour
           </div>
         </div>
         <div className="flex space-x-2">
@@ -51,12 +57,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
             <span className="text-xs text-muted-foreground mb-1 flex items-center">
               <ClockIcon className="h-3 w-3 mr-1" /> Time
             </span>
-            <span className="text-sm font-medium">project.totalDuration</span>
+            <span className="text-sm font-medium">{project.totalDuration}</span>
           </div>
           <div className="bg-secondary/50 rounded-md p-3 flex flex-col">
             <span className="text-xs text-muted-foreground mb-1">Earnings</span>
             <span className="text-sm font-medium">
-              project.totalEarnings
+              {project.totalEarnings}
             </span>
           </div>
         </div>
@@ -70,7 +76,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div className="mt-4">
           <div className="flex items-center justify-between mb-2">
             <h4 className="text-sm font-medium">
-              Tasks 
+              Tasks ({project.tasks.length})
             </h4>
             <Button variant="ghost" size="sm" className="h-7 px-2 text-xs">
               <Link href={`/projects/${project.id}/new-task`}>
@@ -79,7 +85,40 @@ export function ProjectCard({ project }: ProjectCardProps) {
             </Button>
           </div>
 
-         
+          {project.tasks.length > 0 ? (
+            <ul className="space-y-1">
+              {project.tasks.slice(0, 3).map((task) => (
+                <li
+                  key={task.id}
+                  className="text-sm px-2 py-1 rounded-sm hover:bg-secondary/50 transition-colors"
+                >
+                  <Link
+                    href={`/projects/${project.id}/tasks/${task.id}`}
+                    className="flex items-center justify-between"
+                  >
+                    <span className="truncate max-w-[200px]">{task.name}</span>
+                    <div className="flex items-center text-muted-foreground">
+                      <TimerIcon className="h-3 w-3 mr-1" />
+                      <span className="text-xs">
+                        <p>LOOOL</p>
+                      </span>
+                    </div>
+                  </Link>
+                </li>
+              ))}
+              {project.tasks.length > 3 && (
+                <li className="text-xs text-center text-muted-foreground mt-1">
+                  <Link href={`/projects/${project.id}`}>
+                    View all {project.tasks.length} tasks...
+                  </Link>
+                </li>
+              )}
+            </ul>
+          ) : (
+            <div className="text-sm text-muted-foreground text-center py-2 italic">
+              No tasks yet
+            </div>
+          )}
         </div>
       </CardBody>
 

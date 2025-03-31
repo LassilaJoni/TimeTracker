@@ -1,41 +1,30 @@
-"use client"
 import { ProjectCard } from "@/app/components/projects/ProjectCard";
+import { createClient } from "@/app/utils/supabase/server";
+import { fetchUserProjects } from "@/lib/api/projects";
 import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import { redirect } from "next/navigation";
 
-export default function Dashboard() {
 
-// create mock data for projects
-const projects = [
-  {
-    id: "1",
-    name: "Project A",
-    description: "Description for Project A",
-    hourlyRate: 50,
-    deadline: new Date(),
-    totalDuration: 10,
-    totalEarnings: 500,
-    tasks: [
-      { id: "1", name: "Task 1", duration: 3600 }, // 1 hour
-      { id: "2", name: "Task 2", duration: 7200 }, // 2 hours
-    ],
-  },
-  {
-    id: "2",
-    name: "Project B",
-    description: "Description for Project B",
-    hourlyRate: 60,
-    deadline: new Date(),
-    totalDuration: 20,
-    totalEarnings: 1200,
-    tasks: [
-      { id: "3", name: "Task 3", duration: 7200 }, // 2 hours
-      { id: "4", name: "Task 4", duration: 10800 }, // 3 hours
-    ],
-  },
-  // Add more mock projects as needed
-];
-  
+  export default async function Dashboard() {
+  const supabase = await createClient();
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+  if (userError) {
+    console.error("Error fetching user:", userError.message);
+    redirect("/login");
+  }
+  if (!user) {
+    console.error("No user found");
+    redirect("/login");
+  }
+  const userId = user.id;
+    const projects = await fetchUserProjects(userId);
+
+
   return (
     <div className="space-y-6 page-transition">
       <div className="flex items-center justify-between">
