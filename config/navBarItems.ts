@@ -12,6 +12,8 @@ import {
     SquareTerminal,
   } from "lucide-react";
 
+  // TODO: add user details. avatar??
+
 const data = {
     user: {
       name: "shadcn",

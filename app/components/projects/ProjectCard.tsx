@@ -85,7 +85,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
       <CardFooter className="pt-0">
         <Button className="w-full">
-          <Link href={`/projects/${project.id}`}>View Project</Link>
+          <Link href={`/dashboard/projects/${project.id}`}>View Project</Link>
         </Button>
       </CardFooter>
     </Card>

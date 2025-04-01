@@ -14,3 +14,17 @@ export async function fetchUserProjects(userId: string) {
   }
   return data;
 }
+
+export async function fetchProjectById(projectId: string) {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("projects")
+    .select("id, name, description, hourly_rate, deadline")
+    .eq("id", projectId)
+    .single();
+
+  if (error) {
+    throw error;
+  }
+  return data;
+}
