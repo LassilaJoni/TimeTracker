@@ -52,7 +52,7 @@ export default async function ProjectDetail({
       <div className="flex items-center space-x-2">
         <Button size="sm">
           <Link
-            href={`/projects/${project.id}/edit`}
+            href={`/dashboard/projects/${project.id}/edit`}
             className="flex items-center"
           >
             <PencilIcon className="h-3.5 w-3.5 mr-1" /> Edit
@@ -60,7 +60,7 @@ export default async function ProjectDetail({
         </Button>
         <Button size="sm">
           <Link
-            href={`/projects/${project.id}/new-task`}
+            href={`/dashboard/projects/${project.id}/new-task`}
             className="flex items-center"
           >
             <PlusIcon className="h-3.5 w-3.5 mr-1" /> Add Task
@@ -137,7 +137,7 @@ export default async function ProjectDetail({
           <h2 className="text-xl font-semibold">Tasks</h2>
           <Button>
             <Link
-              href={`/projects/${project.id}/new-task`}
+              href={`/dashboard/projects/${project.id}/new-task`}
               className="flex items-center"
             >
               <PlusIcon className="h-4 w-4 mr-1" /> Add Task
@@ -152,7 +152,7 @@ export default async function ProjectDetail({
               Create your first task to start tracking time
             </p>
             <Button>
-              <Link href={`/projects/${project.id}/new-task`}>
+              <Link href={`/dashboard/projects/${project.id}/new-task`}>
                 <PlusIcon className="h-4 w-4 mr-1" /> Create Task
               </Link>
             </Button>

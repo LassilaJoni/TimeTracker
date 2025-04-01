@@ -4,7 +4,13 @@ import { Project } from "@/app/types";
 import { Link } from "@heroui/link";
 import { useState } from "react";
 import { Card, CardHeader, CardBody, CardFooter } from "@heroui/card";
-import { ClockIcon, EditIcon, PlusIcon, TimerIcon, TrashIcon } from "lucide-react";
+import {
+  ClockIcon,
+  EditIcon,
+  PlusIcon,
+  TimerIcon,
+  TrashIcon,
+} from "lucide-react";
 import { Badge } from "@heroui/react";
 import { format } from "date-fns";
 
@@ -16,7 +22,6 @@ interface ProjectCardProps {
     description: string;
     hourly_rate: number | null;
     deadline: string | null;
-
   };
 }
 
@@ -32,8 +37,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
         <div className="flex space-x-2">
           <Button isIconOnly>
-            <Link href={`/projects/${project.id}/edit`}>
-              <EditIcon className="h-4 w-4" /> 
+            <Link href={`/dashboard/projects/${project.id}/edit`}>
+              <EditIcon className="h-4 w-4" />
             </Link>
           </Button>
         </div>
@@ -55,9 +60,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           </div>
           <div className="bg-secondary/50 rounded-md p-3 flex flex-col">
             <span className="text-xs text-muted-foreground mb-1">Earnings</span>
-            <span className="text-sm font-medium">
-              project.totalEarnings
-            </span>
+            <span className="text-sm font-medium">project.totalEarnings</span>
           </div>
         </div>
 
@@ -69,24 +72,20 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
         <div className="mt-4">
           <div className="flex items-center justify-between mb-2">
-            <h4 className="text-sm font-medium">
-              Tasks 
-            </h4>
+            <h4 className="text-sm font-medium">Tasks</h4>
             <Button variant="ghost" size="sm" className="h-7 px-2 text-xs">
-              <Link href={`/projects/${project.id}/new-task`}>
+              <Link href={`/dashboard/projects/${project.id}/new-task`}>
                 <PlusIcon className="h-3 w-3 mr-1" /> Add Task
               </Link>
             </Button>
           </div>
-
-         
         </div>
       </CardBody>
 
       <CardFooter className="pt-0">
-        <Button className="w-full">
-          <Link href={`/dashboard/projects/${project.id}`}>View Project</Link>
-        </Button>
+        <Link href={`/dashboard/projects/${project.id}`} className="w-full">
+          <Button className="w-full">View project</Button>
+        </Link>
       </CardFooter>
     </Card>
   );
