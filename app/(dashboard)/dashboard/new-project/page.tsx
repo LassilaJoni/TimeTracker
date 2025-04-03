@@ -3,8 +3,7 @@ import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
-import {Textarea} from "@heroui/input";
-import { SupabaseClient } from "@supabase/supabase-js";
+import {Textarea} from "@heroui/input";;
 import { createClient } from "@/app/utils/supabase/client";
 
 export default function NewProjectPage() {
@@ -44,7 +43,7 @@ export default function NewProjectPage() {
       }
 
       // 2) Insert a new project
-      const { data, error: insertError } = await supabase
+      const { error: insertError } = await supabase
         .from("projects")
         .insert({
           name,

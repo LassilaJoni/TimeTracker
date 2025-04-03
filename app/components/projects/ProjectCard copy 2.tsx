@@ -1,15 +1,11 @@
 "use client";
 import { Button } from "@heroui/button";
-import { Project } from "@/app/types";
 import { Link } from "@heroui/link";
-import { useState } from "react";
 import { Card, CardHeader, CardBody, CardFooter } from "@heroui/card";
 import {
   ClockIcon,
   EditIcon,
   PlusIcon,
-  TimerIcon,
-  TrashIcon,
 } from "lucide-react";
 import { Badge } from "@heroui/react";
 import { format } from "date-fns";

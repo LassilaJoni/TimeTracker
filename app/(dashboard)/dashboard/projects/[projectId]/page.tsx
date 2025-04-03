@@ -12,25 +12,25 @@ import {
 import { Button } from "@heroui/button";
 import { createClient } from "@/app/utils/supabase/server";
 import { fetchProjectById } from "@/lib/api/projects";
-import { Card, CardHeader, CardBody, CardFooter } from "@heroui/card";
+import { Card, CardHeader, CardBody } from "@heroui/card";
 
 export default async function ProjectDetail({
   params,
 }: {
-  params: { projectId: string };
+  params: Promise<{ projectId: string }>;
 }) {
-
+  const { projectId } = await params;
   const supabase = await createClient();
   const {
     data: { user },
     error: userError,
   } = await supabase.auth.getUser();
   if (userError) {
-    console.error("Error fetching user:", userError.message);
+    //console.error("Error fetching user:", userError.message);
     redirect("/login");
   }
   if (!user) {
-    console.error("No user found");
+    //console.error("No user found");
     redirect("/login");
   }
 
@@ -38,7 +38,6 @@ export default async function ProjectDetail({
   `params` should be awaited before using its properties
    npx @next/codemod@canary next-async-request-api . should fix, look into that. This is a temporary fix to not get that annoying error.
   */
-  const { projectId } = await params
 
   const project = await fetchProjectById(projectId);
 

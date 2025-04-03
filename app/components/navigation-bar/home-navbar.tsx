@@ -21,7 +21,6 @@ import {
   TwitterIcon,
   GithubIcon,
   DiscordIcon,
-  HeartFilledIcon,
   SearchIcon,
   Logo,
 } from "@/app/components/icons";

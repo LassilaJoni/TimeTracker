@@ -1,4 +1,4 @@
-import { Calendar, ChevronUp, Home, Inbox, Search, Settings } from "lucide-react"
+import { Calendar, ChevronUp, Home, Search, Settings } from "lucide-react"
 
 import {
   Sidebar,
@@ -15,15 +15,7 @@ import {
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuPortal,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { createClient } from "../../utils/supabase/server";
@@ -56,7 +48,7 @@ const items = [
 export async function AppSidebar() {
 
   const supabase = await createClient();
-  const { data, error } = await supabase.auth.getUser();
+  const { data } = await supabase.auth.getUser();
 
   return (
     <Sidebar>

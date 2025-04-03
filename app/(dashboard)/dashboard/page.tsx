@@ -3,7 +3,6 @@ import { createClient } from "@/app/utils/supabase/server";
 import { fetchUserProjects } from "@/lib/api/projects";
 import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { redirect } from "next/navigation";
 
 
@@ -14,11 +13,9 @@ import { redirect } from "next/navigation";
     error: userError,
   } = await supabase.auth.getUser();
   if (userError) {
-    console.error("Error fetching user:", userError.message);
     redirect("/login");
   }
   if (!user) {
-    console.error("No user found");
     redirect("/login");
   }
   const userId = user.id;
