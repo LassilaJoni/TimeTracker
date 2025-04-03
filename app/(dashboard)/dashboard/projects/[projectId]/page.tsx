@@ -33,8 +33,14 @@ export default async function ProjectDetail({
     console.error("No user found");
     redirect("/login");
   }
-  const userId = user.id;
-  const project = await fetchProjectById(params.projectId);
+
+  /*
+  `params` should be awaited before using its properties
+   npx @next/codemod@canary next-async-request-api . should fix, look into that. This is a temporary fix to not get that annoying error.
+  */
+  const { projectId } = await params
+
+  const project = await fetchProjectById(projectId);
 
   return (
     <div className="space-y-6 page-transition">

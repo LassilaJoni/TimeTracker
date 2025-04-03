@@ -1,8 +1,8 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Next.js + HeroUI",
-  description: "Make beautiful websites regardless of your design experience.",
+  name: "Timenado",
+  description: "A time tracking app for freelancers. Track your time, manage your projects, and generate invoices.",
   navItems: [
     {
       label: "Home",
