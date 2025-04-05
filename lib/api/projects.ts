@@ -16,7 +16,6 @@ export async function fetchUserProjects(userId: string) {
         id,
         name,
         description,
-        hourly_rate,
         deadline,
         completed,
         created_at
@@ -34,7 +33,7 @@ export async function fetchProjectById(projectId: string) {
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("projects")
-    .select("id, name, description, hourly_rate, deadline")
+    .select("id, name, description, hourly_rate, deadline, tasks ( id, name, description, deadline, completed, created_at )")
     .eq("id", projectId)
     .single();
 

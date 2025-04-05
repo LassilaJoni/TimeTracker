@@ -25,17 +25,17 @@ export function ProjectCard({ project }: ProjectCardProps) {
     <Card className="animate-appearance-in w-[400px]">
       <CardHeader className="flex flex-row items-start justify-between space-y-0 pb-2">
         <div>
-          <CardHeader className="font-medium">{project.name}</CardHeader>
+          <p className="font-medium">{project.name}</p>
           <div className="text-sm text-muted-foreground mt-1">
             {project.hourly_rate}/hour
           </div>
         </div>
         <div className="flex space-x-2">
-          <Button isIconOnly>
-            <Link href={`/dashboard/projects/${project.id}/edit`}>
-              <EditIcon className="h-4 w-4" /> 
-            </Link>
-          </Button>
+          <Link href={`/dashboard/projects/${project.id}/edit`}>
+            <Button isIconOnly>
+              <EditIcon className="h-4 w-4" />
+            </Button>
+          </Link>
         </div>
       </CardHeader>
 
@@ -51,12 +51,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
             <span className="text-xs text-muted-foreground mb-1 flex items-center">
               <ClockIcon className="h-3 w-3 mr-1" /> Time
             </span>
-            {/* <span className="text-sm font-medium">{project.totalDuration}</span> */ }
+            {/* <span className="text-sm font-medium">{project.totalDuration}</span> */}
           </div>
           <div className="bg-secondary/50 rounded-md p-3 flex flex-col">
             <span className="text-xs text-muted-foreground mb-1">Earnings</span>
             <span className="text-sm font-medium">
-                {/* {project.totalEarnings} */}
+              {/* {project.totalEarnings} */}
             </span>
           </div>
         </div>
@@ -102,7 +102,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               ))}
               {project.tasks.length > 3 && (
                 <li className="text-xs text-center text-muted-foreground mt-1">
-                  <Link href={`/projects/${project.id}`}>
+                  <Link href={`/dashboard//projects/${project.id}`}>
                     View all {project.tasks.length} tasks...
                   </Link>
                 </li>
@@ -117,10 +117,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </CardBody>
 
       <CardFooter className="pt-0">
-          <Link href={`/dashboard/projects/${project.id}`} className="w-full">
-        <Button className="w-full">
-        View Project
-        </Button>
+        <Link href={`/dashboard/projects/${project.id}`} className="w-full">
+          <Button className="w-full">View Project</Button>
         </Link>
       </CardFooter>
     </Card>

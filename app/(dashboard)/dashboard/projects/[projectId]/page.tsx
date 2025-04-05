@@ -55,14 +55,14 @@ export default async function ProjectDetail({
       </div>
 
       <div className="flex items-center space-x-2">
-        <Button size="sm">
           <Link
             href={`/dashboard/projects/${project.id}/edit`}
             className="flex items-center"
           >
+        <Button size="sm">
             <PencilIcon className="h-3.5 w-3.5 mr-1" /> Edit
-          </Link>
         </Button>
+          </Link>
         <Button size="sm">
           <Link
             href={`/dashboard/projects/${project.id}/new-task`}
@@ -149,6 +149,12 @@ export default async function ProjectDetail({
             </Link>
           </Button>
         </div>
+      {project.tasks.length > 0 ? (
+        <p>
+          penis
+        </p>
+      ) : (
+
 
           <div className="text-center py-12 border border-dashed rounded-lg">
             <TimerIcon className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
@@ -162,7 +168,7 @@ export default async function ProjectDetail({
               </Link>
             </Button>
           </div>
-  
+        )}
       </div>
     </div>
   );
