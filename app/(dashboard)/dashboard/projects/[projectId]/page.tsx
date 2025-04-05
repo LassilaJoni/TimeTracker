@@ -13,6 +13,7 @@ import { Button } from "@heroui/button";
 import { createClient } from "@/app/utils/supabase/server";
 import { fetchProjectById } from "@/lib/api/projects";
 import { Card, CardHeader, CardBody } from "@heroui/card";
+import { TaskItem } from "@/app/components/tasks/TaskItem";
 
 export default async function ProjectDetail({
   params,
@@ -150,9 +151,7 @@ export default async function ProjectDetail({
           </Button>
         </div>
       {project.tasks.length > 0 ? (
-        <p>
-          penis
-        </p>
+        <TaskItem />
       ) : (
 
 
